@@ -25,6 +25,16 @@ app.post('/deliveryorder',(req,res)=>{
     res.send('Parcel Delivery Order Successfully Created !!!!!!')
 })
 
+app.delete('/deliveryorder/:id', (req, res)=>{
+    const newdeliveryorder = deliveryorderArray.find((newdeliveryorder)=>{return newdeliveryorder.id === parseInt(req.params.id)});
+    if(!newdeliveryorder){
+        res.send('Parcel Delivery Order not Found')
+    }else{
+        let index = deliveryorderArray.indexOf(newdeliveryorder);
+        deliveryorderArray.splice(index,1);
+        res.send('Parcel Delivery Order successfully deleted')
+    }
+})
 
 app.listen(6000,()=>{
     console.log('server is listening on port 6000 ....')
