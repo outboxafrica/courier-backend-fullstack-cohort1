@@ -1,23 +1,31 @@
 {
-  "name": "courier.deliverynote",
+  "name": "courier-backend-fullstack-cohort1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon starting"
+    "start": "nodemon start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/outboxafrica/courier-backend-fullstack-cohort1.git"
   },
-  "author": "salwa",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/outboxafrica/courier-backend-fullstack-cohort1/issues"
   },
   "homepage": "https://github.com/outboxafrica/courier-backend-fullstack-cohort1#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.7",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.6",
     "nodemon": "^2.0.12"
   }
 }
