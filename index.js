@@ -18,6 +18,16 @@ const deliveryorderArray = [{
 }]
 
 
+app.get('/deliveryorder',(req,res)=>{
+    res.send(deliveryorderArray)
+})
+
+
+app.get('/deliveryorder/:id',(req,res)=>{
+    const deliveryorder = deliveryorderArray.find((deliveryorder)=>{return deliveryorder.id === parseInt(req.params.id)})
+})
+
+
 app.post('/deliveryorder',(req,res)=>{
     const newdeliveryorder = req.body;
     deliveryorderArray.push(newdeliveryorder);
