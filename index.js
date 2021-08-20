@@ -7,6 +7,7 @@ app.use(express.json())
 
 //delivery  order data
 const deliveryorderArray = [{
+    id:1,
     itemname:'clothes',
     sendersname:'Abubaker Yusuf',
     senderscontact:'0897464536',
@@ -19,10 +20,19 @@ const deliveryorderArray = [{
 
 
 app.post('/deliveryorder',(req,res)=>{
-    const newdeliveryorder = req.body;
+    const newdeliveryorder = req.body.newdeliveryorder;
     deliveryorderArray.push(newdeliveryorder);
 
     res.send('Parcel Delivery Order Successfully Created !!!!!!')
+})
+
+app.patch('/deliveryorder/:id',(req,res)=>{
+    const newdeliveryorder = deliveryorderArray.find((newdeliveryorder)=>{
+        return newdeliveryorder.id===parseInt(req.params.id)
+    })
+    if(!newdeliveryorder){res.send(' Delivery Order Not Found !!!')}
+    else{newdeliveryorder.itemname=req.body.itemname;
+    res.send(newdeliveryorder)}
 })
 
 
