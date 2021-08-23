@@ -4,6 +4,9 @@ const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
+// Delivery Routes
+const deliveryOrderRoute = require('./routes/deliveryOrderRoute')
+
 const app = express();
 
 // middleware
@@ -28,56 +31,8 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', requireAuth, (req, res) => res.render('smoothies'));
 app.use(authRoutes);
 
-
-/* === Delivery order Routes === **/
-
-//delivery  order data
-const deliveryorderArray = [{
-    id:1,
-    itemname:'clothes',
-    sendersname:'Abubaker Yusuf',
-    senderscontact:'0897464536',
-    senderslocation:'Kampala',
-    receiversname:'Umar Lut',
-    receiverscontact:'0836654749',
-    receiverslocation:'Adjumani'
-
-}]
-
-app.get('/deliveryorder',(req,res)=>{
-    res.send(deliveryorderArray)
-})
-
-app.get('/deliveryorder/:id',(req,res)=>{
-    const deliveryorder = deliveryorderArray.find((deliveryorder)=>{return deliveryorder.id === parseInt(req.params.id)})
-})
-
-app.post('/deliveryorder',(req,res)=>{
-    const newdeliveryorder = req.body.newdeliveryorder;
-    deliveryorderArray.push(newdeliveryorder);
-
-    res.send('Parcel Delivery Order Successfully Created !!!!!!')
-})
-
-app.delete('/deliveryorder/:id', (req, res)=>{
-    const newdeliveryorder = deliveryorderArray.find((newdeliveryorder)=>{return newdeliveryorder.id === parseInt(req.params.id)});
-    if(!newdeliveryorder){
-        res.send('Parcel Delivery Order not Found')
-    }else{
-        let index = deliveryorderArray.indexOf(newdeliveryorder);
-        deliveryorderArray.splice(index,1);
-        res.send('Parcel Delivery Order successfully deleted')
-    }
-})
-
-app.patch('/deliveryorder/:id',(req,res)=>{
-    const newdeliveryorder = deliveryorderArray.find((newdeliveryorder)=>{
-        return newdeliveryorder.id===parseInt(req.params.id)
-    })
-    if(!newdeliveryorder){res.send(' Delivery Order Not Found !!!')}
-    else{newdeliveryorder.itemname=req.body.itemname;
-    res.send(newdeliveryorder)}
-})
+// Routes for API
+app.use('/deliveryOrder', deliveryOrderRoute)
 
 
 
