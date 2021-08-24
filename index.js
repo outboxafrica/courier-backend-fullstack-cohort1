@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 const app = express();
-
+require('dotenv').config();
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
@@ -40,16 +41,13 @@ const deliveryorderArray = [{
     senderslocation:'Kampala',
     receiversname:'Umar Lut',
     receiverscontact:'0836654749',
-    receiverslocation:'Adjumani'
+    receiverslocation:'Adjumani',
+    status: 'pending'
 
 }]
 
 app.get('/deliveryorder',(req,res)=>{
     res.send(deliveryorderArray)
-})
-
-app.get('/deliveryorder/:id',(req,res)=>{
-    const deliveryorder = deliveryorderArray.find((deliveryorder)=>{return deliveryorder.id === parseInt(req.params.id)})
 })
 
 app.post('/deliveryorder',(req,res)=>{
@@ -69,16 +67,54 @@ app.delete('/deliveryorder/:id', (req, res)=>{
         res.send('Parcel Delivery Order successfully deleted')
     }
 })
+app.get('/deliveryorder/:id',(req,res)=>{
+    const receivedOrder=deliveryorderArray.find((receivedOrder)=>{
+        return receivedOrder.id===parseInt(req.params.id);
+    });
+    if(!receivedOrder){
+        res.send("Oops, order not found!")
+    }else{
+        res.send(receivedOrder);
+    }
+    
+});
 
+// update parcel location
 app.patch('/deliveryorder/:id',(req,res)=>{
-    const newdeliveryorder = deliveryorderArray.find((newdeliveryorder)=>{
-        return newdeliveryorder.id===parseInt(req.params.id)
-    })
-    if(!newdeliveryorder){res.send(' Delivery Order Not Found !!!')}
-    else{newdeliveryorder.itemname=req.body.itemname;
-    res.send(newdeliveryorder)}
-})
+    const receivedOrder=deliveryorderArray.find((receivedOrder)=>{
+        return receivedOrder.id===parseInt(req.params.id);
+    });
+    if(!receivedOrder){
+        res.send("Oops!, Order not found");
+    }else{
+        receivedOrder.receiverslocation=req.body.receiverslocation;
+        res.send(receivedOrder);
 
+        const mailOptions={
+            from: '"Safe Courier " <from@example.com>',
+            to: "user1@example.com, user2@example.com", 
+            subject: "Location changed", 
+            text: `The current location of your parcel has been changed to ${receivedOrder.receiversLocation}`, 
+          }
+          
+          const transporter= nodemailer.createTransport({
+            host: process.env.MAIL_SERVICE,
+            auth: {
+              user:process.env.USER ,
+              pass: process.env.PASS
+            }
+          });
+
+           transporter.sendMail(mailOptions, (error, info)=>{
+             if(error){
+              console.log(error);
+             }
+             else{
+               console.log('Email sent ' + info.response)
+             }
+           });
+        }
+});
 
 
 const PORT = process.env.PORT || 3000;
@@ -86,3 +122,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT} ....`);
 })
+
+
+
