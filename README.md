@@ -133,3 +133,147 @@
   * **Status:** 400 BAD REQUEST <br />
     **Content:** `{ error: 'Invalid password, retry with correct password!' }`
   
+
+**Get All deliveryorder**
+----
+  Get All details of All deliveryoerder.
+
+| Endpoint              | Method            | Params       |Data type |
+|:--------------------- |:-----------------:| :-----------:|---------:|
+| `/api/deliveryorder`  | GET               | `none`       |string    | 
+
+* **Request Body**
+
+  > None
+
+* **Request Headers**
+
+  > None
+
+* **Success Response:**
+
+  **Status:** 200 OK <br />
+      **Sample Content:** '{'deliveryorder details'}
+ 
+* **Error Response:**
+
+  * **Status:** 404 NOT FOUND 
+    **Content:** `{ 'error.message' }`
+
+
+
+  **Get deliveryOrder By ID**
+  ----
+  Returns json data about deliveryorder details by id. 
+
+| Endpoint                  | Method            | Params       |Data type |
+|:--------------------------|:-----------------:| :-----------:|---------:|
+| `/api/deliveryorder/:id`  | GET               | `required`   |string    | 
+
+* **Request Body**
+
+  > None
+
+* **Request Headers**
+
+  > None
+
+* **Success Response:**
+
+  **Status:** 200 OK 
+      **Sample Content:** '{'deliveryorder details by id'}'
+ 
+            
+* **Error Response:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Content:** `{ 'error.message' }`
+
+
+ **create DeliveryOrder**
+----
+ Create an order.
+
+| Endpoint                  | Method            | Params       |Data type |
+|:--------------------------|:-----------------:| :-----------:|---------:|
+| `/api/deliveryorder`      | POST              | `none`       |string    | 
+
+* **Request Headers**
+
+  > None
+
+* **Success Response:**
+
+  **Status:** 200 OK 
+      **Sample Content:** 
+ 
+            
+* **Error Response:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Content:** `{ 'error.message' }`
+
+
+**Update DeliveryOrder**
+----
+ Update an order.
+
+ | Endpoint                  | Method            | Params       |Data type |
+|:--------------------------|:-----------------:| :-----------:|---------:|
+| `/api/deliveryorder/:id`      | PATCH             | `required`   |string    | 
+
+* **Request Headers**
+
+  > Update what you need to update.
+
+* **Success Response:**
+
+  **Status:** 200 OK 
+      **Sample Content:** 
+ 
+            
+* **Error Response:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Content:** `{ 'error.message' }`
+
+
+**Delete DeliveryOrder**
+----
+  Delets an order from the Data Base.
+
+| Endpoint                  | Method            | Params       |Data type |
+|:------------------------- |:-----------------:| :-----------:|---------:|
+| `/api/deliveryorder/:id`  | DELETE            | `required`   |string    | 
+
+*   **Request Body**
+    
+    > None
+
+* **Request Headers**
+
+  >None
+
+* **Success Response:**
+
+  **Status:** 200 OK <br />
+      **Sample Content:**
+
+    ```javascript
+        {
+             message: `Deliveryorder Successfully cancelled`
+        }
+    ```  
+            
+ 
+* **Error Response:**
+
+  * **Status:** 400 BAD REQUEST <br />
+    **Content:** `{ 'error.message' }`
+
+
+-----
+<br/>
+
+## Contributing
+You can help improve the code base of the application where neccessary by raising an issue or opening a pull request.
