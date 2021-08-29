@@ -10,7 +10,7 @@ const deliveryOrderRoute = require('./routes/deliveryOrderRoute')
 const app = express();
 
 // middleware
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -28,11 +28,13 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 // routes
 app.get('*', checkUser);
 app.get('/', (req, res) => res.render('home'));
-app.get('/smoothies', requireAuth, (req, res) => res.render('smoothies'));
+app.get(requireAuth);
 app.use(authRoutes);
 
 // Routes for API
-app.use('/deliveryOrder', deliveryOrderRoute)
+app.use('/api/deliveryOrder', deliveryOrderRoute);  
+app.use( '/api/users', authRoutes);
+ 
 
 
 
