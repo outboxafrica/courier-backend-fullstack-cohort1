@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // view engine
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
 
 // database connection

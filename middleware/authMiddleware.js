@@ -9,14 +9,18 @@ const requireAuth = (req, res, next) => {
     jwt.verify(token, 'courier-backend-fullstack-cohort1', (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login');
+        res.status(400).json({
+          "error": error.message
+        });
       } else {
         console.log(decodedToken);
         next();
       }
     });
   } else {
-    res.redirect('/login');
+    res.status(200).json({
+      "result": res.body
+    });
   }
 };
 
