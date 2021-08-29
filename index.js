@@ -9,6 +9,13 @@ const deliveryOrderRoute = require('./routes/deliveryOrderRoute')
 
 const app = express();
 
+//CORS
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, authorization');
+	next();
+})
 // middleware
 // app.use(express.static('public'));
 app.use(express.json());
