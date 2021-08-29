@@ -10,12 +10,12 @@ const deliveryOrderRoute = require('./routes/deliveryOrderRoute')
 const app = express();
 
 // middleware
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
 
-// view engine
-app.set('view engine', 'ejs');
+// view engine  
+// app.set('view engine','html');
 
 
 // database connection
@@ -26,13 +26,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 
 // routes
-app.get('*', checkUser);
-app.get('/', (req, res) => res.render('home'));
-app.get('/smoothies', requireAuth, (req, res) => res.render('smoothies'));
+// app.get('*', checkUser);
+// app.get('/', (req, res) => res.render('home'));
+// app.get(requireAuth);
 app.use(authRoutes);
 
 // Routes for API
-app.use('/deliveryOrder', deliveryOrderRoute)
+app.use('/deliveryOrder', deliveryOrderRoute);  
+app.use( '/users', authRoutes);
+ 
 
 
 

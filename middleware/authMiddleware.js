@@ -6,17 +6,21 @@ const requireAuth = (req, res, next) => {
 
   // check json web token exists & is verified
   if (token) {
-    jwt.verify(token, 'net ninja secret', (err, decodedToken) => {
+    jwt.verify(token, 'courier-backend-fullstack-cohort1', (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login');
+        res.status(400).json({
+          "error": error.message
+        });
       } else {
         console.log(decodedToken);
         next();
       }
     });
   } else {
-    res.redirect('/login');
+    res.status(200).json({
+      "result": res.body
+    });
   }
 };
 
@@ -24,7 +28,7 @@ const requireAuth = (req, res, next) => {
 const checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
-    jwt.verify(token, 'net ninja secret', async (err, decodedToken) => {
+    jwt.verify(token, 'courier-backend-fullstack-cohort1', async (err, decodedToken) => {
       if (err) {
         res.locals.user = null;
         next();
