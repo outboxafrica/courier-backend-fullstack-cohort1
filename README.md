@@ -64,7 +64,7 @@
 * **Request Body**
     ```javascript
         {
-            "userEmail"    : "me@gmail.com",
+            "email"    : "me@gmail.com",
             "method"      : "Local-auth",
             "password"    : "mePassword",
             "userLevel"   :"1"
@@ -106,7 +106,7 @@
  * **Request Body**
     ```javascript
         {
-            "userEmail"    : "me@gmail.com",
+            "email"    : "me@gmail.com",
             "password"    : "mePassword"
         }
     ```  
