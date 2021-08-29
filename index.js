@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // view engine  
-// app.set('view engine','html');
+// app.set('view engine','ejs');
 
 
 // database connection
@@ -39,7 +39,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 app.use(authRoutes);
 
 // Routes for API
-app.use('/deliveryOrder', deliveryOrderRoute);  
+app.use('/parcels', deliveryOrderRoute);  
 app.use( '/users', authRoutes);
  
 
