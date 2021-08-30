@@ -50,7 +50,7 @@
 
 | Endpoint      | Method            | Params       |Data type |
 |:------------- |:-----------------:| :-----------:|---------:|
-| `/api/users/signup`  | POST        | `None`   |`String`    | 
+| `/auth/signup`  | POST        | `None`   |`String`    | 
 
 * **Request Body**
     ```javascript
@@ -89,7 +89,7 @@
 
 | Endpoint      | Method            | Params       |Data type |
 |:------------- |:-----------------:| :-----------:|---------:|
-| `/api/users/login`  | GET        | `None`   |`None`    | 
+| `/auth/login`  | POST     | `None`   |`STRING`    | 
    
 
  * **Request Body**
