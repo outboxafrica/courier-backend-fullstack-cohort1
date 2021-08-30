@@ -140,7 +140,7 @@
 
 | Endpoint              | Method            | Params       |Data type |
 |:--------------------- |:-----------------:| :-----------:|---------:|
-| `/api/deliveryorder`  | GET               | `none`       |string    | 
+| `/api/parcels`  | GET               | `none`       |string    | 
 
 * **Request Body**
 
@@ -168,7 +168,7 @@
 
 | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/deliveryorder/:id`  | GET               | `required`   |string    | 
+| `/api/parcels/:id`  | GET               | `required`   |string    | 
 
 * **Request Body**
 
@@ -196,7 +196,7 @@
 
 | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/deliveryorder`      | POST              | `none`       |string    | 
+| `/api/parcels`      | POST              | `none`       |string    | 
 
 * **Request Headers**
 
@@ -220,7 +220,7 @@
 
  | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/deliveryorder/:id`      | PATCH             | `required`   |string    | 
+| `/api/parcels/:id`      | PATCH             | `required`   |string    | 
 
 * **Request Headers**
 
@@ -244,7 +244,7 @@
 
 | Endpoint                  | Method            | Params       |Data type |
 |:------------------------- |:-----------------:| :-----------:|---------:|
-| `/api/deliveryorder/:id`  | DELETE            | `required`   |string    | 
+| `/api/parcels/:id`  | DELETE            | `required`   |string    | 
 
 *   **Request Body**
     
