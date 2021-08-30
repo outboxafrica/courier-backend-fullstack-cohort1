@@ -11,9 +11,7 @@
 
 ## Main Files: Project Structure
  ```bash
-     |-- src
-        |-- index.js' ** the main driver of the app'
-        |-- server
+        |-- index.js' ** the main driver of the app
             |-- controllers
             |   |-- authController.js
             |   |-- deliveryOrderController.js
@@ -25,7 +23,7 @@
             |-- routes
                 |-- authRouter.js
                 |-- deliveryOrderRouter.js
-
+            |--.gitignore
 ``` 
 
 ## Environment Variables
@@ -52,7 +50,7 @@
 
 | Endpoint      | Method            | Params       |Data type |
 |:------------- |:-----------------:| :-----------:|---------:|
-| `/api/users/signup`  | POST        | `None`   |`None`    | 
+| `/api/users/signup`  | POST        | `None`   |`String`    | 
 
 * **Request Body**
     ```javascript
