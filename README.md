@@ -79,7 +79,7 @@
  
 * **Error Response:**
 
-  * **Status:** 400 CONFLICT <br />
+  * **Status:** 400 BAD_REQUEST <br />
     **Content:** `{ "Error": "User Already Exists" }`
 
 
@@ -129,7 +129,7 @@
 
 | Endpoint              | Method            | Params       |Data type |
 |:--------------------- |:-----------------:| :-----------:|---------:|
-| `/api/parcels`  | GET               | `none`       |string    | 
+| `/api/v1/parcels`  | GET               | `none`       |string    | 
 
 * **Request Body**
 
@@ -142,7 +142,7 @@
 * **Success Response:**
 
   **Status:** 200 OK <br />
-      **Sample Content:** '{'deliveryorder details'}
+      **Sample Content:** '{'delivery order details'}
  
 * **Error Response:**
 
@@ -157,7 +157,7 @@
 
 | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/parcels/:id`  | GET               | `required`   |string    | 
+| `/api/v1/parcels/:id`  | GET               | `required`   |string    | 
 
 * **Request Body**
 
@@ -185,7 +185,7 @@
 
 | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/parcels`      | POST              | `none`       |string    | 
+| `/api/v1/parcels`      | POST              | `none`       |string    | 
 
 * **Request Headers**
 
@@ -209,7 +209,7 @@
 
  | Endpoint                  | Method            | Params       |Data type |
 |:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/parcels/:id`      | PATCH             | `required`   |string    | 
+| `/api/v1/parcels/:id`      | PATCH             | `required`   |string    | 
 
 * **Request Headers**
 
@@ -250,7 +250,7 @@
 
     ```javascript
         {
-             message: `Deliveryorder Successfully cancelled`
+             message: `Deliveryorder Successfully Cancelled`
         }
     ```  
             
