@@ -14,22 +14,15 @@
      |-- src
         |-- index.js' ** the main driver of the app'
         |-- server
-            |-- app.js
-            |-- config
-            |   |-- connect.js
-            |   |-- envTypes.js
             |-- controllers
             |   |-- authController.js
             |   |-- deliveryOrderController.js
-            |-- helpers
-            |   |-- validation.js
-            |   |-- schemas
-            |       |-- DeliveryOrder.js
-            |       |-- users.js
+            |--middleware
+                |--authMiddleware.js
             |-- models
             |   |-- DeliveryOrder.js
             |   |-- user.js
-            |-- routers
+            |-- routes
                 |-- authRouter.js
                 |-- deliveryOrderRouter.js
 
