@@ -28,7 +28,7 @@ app.use(cookieParser());
 // database connection
 const dbURI = 'mongodb+srv://Maratah:test1234@cluster0.q5jue.mongodb.net/node-auth';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-  .then((result) => console.log('Database Connection Established . . .'))
+  .then((result) => console.log('Database Connection Established . . . '))
   .catch((err) => console.log('Database Connection Failed . . .'));
 
 
