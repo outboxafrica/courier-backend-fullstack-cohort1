@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha --recursive -exit"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,16 @@
   "homepage": "https://github.com/outboxafrica/courier-backend-fullstack-cohort1#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^9.1.1",
     "mongoose": "^5.13.7",
+    "supertest": "^6.1.6",
     "validator": "^13.6.0"
   },
   "devDependencies": {
