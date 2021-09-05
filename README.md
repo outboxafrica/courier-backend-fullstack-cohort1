@@ -30,6 +30,7 @@
 
 * PORT -- `server port number`
 * DB_URL -- `database URL`
+* DB_URL_TEST -- `database URL for tests`
 
 ## Usage
 1. `clone` this repository.
@@ -260,7 +261,11 @@
   * **Status:** 400 BAD REQUEST <br />
     **Content:** `{ 'error.message' }`
 
-
+## API Tests
+To test API with mocha,
+```bash
+run npm test
+```
 -----
 <br/>
 
