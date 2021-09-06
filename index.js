@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
@@ -26,7 +27,8 @@ app.use(cookieParser());
 
 
 // database connection
-const dbURI = 'mongodb+srv://Maratah:test1234@cluster0.q5jue.mongodb.net/node-auth';
+// const dbURI = 'mongodb+srv://Maratah:test1234@cluster0.q5jue.mongodb.net/node-auth';
+const dbURI = process.env.NODE_ENV !== 'production' ? process.env.DB_URL_TEST : process.env.DB_URL
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then((result) => console.log('Database Connection Established . . . '))
   .catch((err) => console.log('Database Connection Failed . . .'));
@@ -50,3 +52,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT} ....`);
 })
+
+// export app for testing purposes
+module.exports = app 

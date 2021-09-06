@@ -55,11 +55,13 @@ module.exports.login_get = (req, res) => {
 module.exports.signup_post = async (req, res) => {
   const { email, password } = req.body;
 
+  if(!email || !password) return res.status(400).send({ message: 'email and password are required'})
+
   try {
     const user = await User.create({ email, password });
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-    console.log(token)
+    // console.log(token)
     res.status(201).json({ user: user._id });
   }
   catch(err) {
@@ -71,6 +73,7 @@ module.exports.signup_post = async (req, res) => {
 
 module.exports.login_post = async (req, res) => {
   const { email, password } = req.body;
+  if(!email || !password) return res.status(400).send({ message: 'email and password are required'})
 
   try {
     const user = await User({email, password});
