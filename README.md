@@ -19,11 +19,17 @@
                 |--authMiddleware.js
             |-- models
             |   |-- DeliveryOrder.js
-            |   |-- user.js
+            |   |-- User.js
             |-- routes
                 |-- authRouter.js
                 |-- deliveryOrderRouter.js
+            |-- views
+                |-- destination.ejs
+                |-- home.ejs  
             |--.gitignore
+            |-- index.js
+            |-- package-lock.json
+            |-- package.json
 ``` 
 
 ## Environment Variables
@@ -155,8 +161,8 @@
   ----
   Returns json data about deliveryorder details by id. 
 
-| Endpoint                  | Method            | Params       |Data type |
-|:--------------------------|:-----------------:| :-----------:|---------:|
+| Endpoint               | Method            | Params       |Data type |
+|:-----------------------|:-----------------:| :-----------:|---------:|
 | `/api/v1/parcels/:id`  | GET               | `required`   |string    | 
 
 * **Request Body**
@@ -178,14 +184,42 @@
   * **Status:** 404 NOT FOUND <br />
     **Content:** `{ 'error.message' }`
 
+**Get Orders by User ID**
+----
+Returns json data about orders by User ID.
+
+| Endpoint            | Method            | Params       |Data type |
+|:--------------------|:-----------------:| :-----------:|---------:|
+| `/api/v1/parcels`   | POST              | `required`   |string    | 
+
+* **Request Body**
+
+  > None
+
+* **Request Headers**
+
+  > None
+
+* **Success Response:**
+
+  **Status:** 200 OK 
+      **Sample Content:** '{'order details by User id'}'
+ 
+            
+* **Error Response:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Content:** `{ 'error.message' }`
+
+
 
  **create DeliveryOrder**
 ----
  Create an order.
 
-| Endpoint                  | Method            | Params       |Data type |
-|:--------------------------|:-----------------:| :-----------:|---------:|
-| `/api/v1/parcels`      | POST              | `none`       |string    | 
+| Endpoint             | Method            | Params       |Data type |
+|:---------------------|:-----------------:| :-----------:|---------:|
+| `/api/v1/parcels`    | POST              | `none`       |string    | 
 
 * **Request Headers**
 
