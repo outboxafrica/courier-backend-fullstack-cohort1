@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true],
+    required: true,
     maxlength: [8,'Maximum username length is 8 characters']
     
   },
@@ -17,11 +17,6 @@ const userSchema = new mongoose.Schema({
     validate: [isEmail, 'Please enter a valid email']
   },
   password: {
-    type: String,
-    required: [true, 'Please enter a password'],
-    minlength: [8, 'Minimum password length is 8 characters'],
-  },
-  confirmpassword: {
     type: String,
     required: [true, 'Please enter a password'],
     minlength: [8, 'Minimum password length is 8 characters'],

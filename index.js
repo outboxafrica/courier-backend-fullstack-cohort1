@@ -40,7 +40,7 @@ app.use(authRoutes);
 
 // Routes for API
 app.use('/api/v1/parcels', deliveryOrderRoute);  
-app.use( 'api/v1/users', authRoutes);
+app.use( '/api/v1/users', authRoutes);
  
 
 

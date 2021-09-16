@@ -20,8 +20,21 @@ const getDeliveryOrderById = (req, res)=>{
     })
 }
 
+const getOrdersByUserId = (req,res)=>{
+    console.log(req.params.userID);
+
+    DeliveryOrder.find({userID:req.params.userID})
+        .then((result)=>{
+            res.json(result);
+        })
+        .catch((error)=>{
+            res.json(error);
+        })
+}
+
 const createDeliveryOrder = (req, res)=>{
-    const deliveryOrder = new DeliveryOrder(req.body);
+    console.log(req);
+    const deliveryOrder = new DeliveryOrder({...req.body,userID: req.userID});
     deliveryOrder.save()
     .then((result)=>{
         res.json(result)
@@ -56,5 +69,6 @@ module.exports = {
     getDeliveryOrderById,
     createDeliveryOrder,
     updateDeliveryOrder,
-    deleteDeliveryOrder
+    deleteDeliveryOrder,
+    getOrdersByUserId
 }

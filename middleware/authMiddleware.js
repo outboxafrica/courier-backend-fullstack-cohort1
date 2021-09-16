@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
-
+  
   // check json web token exists & is verified
   if (token) {
     jwt.verify(token, 'courier-backend-fullstack-cohort1', (err, decodedToken) => {
@@ -13,7 +13,8 @@ const requireAuth = (req, res, next) => {
           "error": error.message
         });
       } else {
-        console.log(decodedToken);
+        console.log(decodedToken.id);
+        req.userID = decodedToken.id;
         next();
       }
     });

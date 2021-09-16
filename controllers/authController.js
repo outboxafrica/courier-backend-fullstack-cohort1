@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 // handle errors
 const handleErrors = (err) => {
@@ -53,34 +54,40 @@ module.exports.login_get = (req, res) => {
 }
 
 module.exports.signup_post = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, username} = req.body;
 
   try {
-    const user = await User.create({ email, password });
-    const token = createToken(user._id);
+    const user =  new User({ email, password, username });
+    const savedUser =  await user.save();
+    const token = createToken(savedUser._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-    console.log(token)
-    res.status(201).json({ user: user._id });
+    res.status(201).json({savedUser,token});
   }
   catch(err) {
     const errors = handleErrors(err);
-    res.status(400).json({ errors });
+    res.status(400).json(err);
   }
  
 }
 
 module.exports.login_post = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, username} = req.body;
 
   try {
-    const user = await User({email, password});
-    const token = createToken(user._id);
-    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).json({ user: user._id });
+    const user = await User.findOne({username});
+    const decoded = await bcrypt.compare(password,user.password);
+    if(decoded){
+      const token = createToken(user._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+      res.status(200).json({user._id,token});
+    }else{
+      res.json({Error:"Password is not Correct"})
+    }
+    
   } 
   catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json({ errors });
+    res.status(400).json(err);
   }
 
 }
@@ -90,4 +97,15 @@ module.exports.logout_get = (req, res) => {
   res.status(200).json({
     "result": res.body
   });
+}
+
+module.exports.getUsers = (req,res) =>{
+  User.find()
+    .then(result=>{
+      res.json(result)
+    })
+    .catch(error=>{
+      res.json(error)
+    })
+
 }

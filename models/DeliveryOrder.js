@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DeliveryOrderSchema = new Schema({
+    userID:{
+        type:String,
+        required:true
+    },
     itemname:{
         type:String,
         required:true
