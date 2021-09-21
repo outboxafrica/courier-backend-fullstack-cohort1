@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -19,31 +18,9 @@ const requireAuth = (req, res, next) => {
       }
     });
   } else {
-    res.status(200).json({
-      "result": res.body
-    });
-  }
-};
-
-// check current user
-const checkUser = (req, res, next) => {
-  const token = req.cookies.jwt;
-  if (token) {
-    jwt.verify(token, 'courier-backend-fullstack-cohort1', async (err, decodedToken) => {
-      if (err) {
-        res.locals.user = null;
-        next();
-      } else {
-        let user = await User.findById(decodedToken.id);
-        res.locals.user = user;
-        next();
-      }
-    });
-  } else {
-    res.locals.user = null;
-    next();
+    res.status(404).json({error: "Authorization Token missing. Please Login.."});
   }
 };
 
 
-module.exports = { requireAuth, checkUser };
+module.exports = { requireAuth };

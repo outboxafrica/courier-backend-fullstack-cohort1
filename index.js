@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
-const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 // Delivery Routes
 const deliveryOrderRoute = require('./routes/deliveryOrderRoute')
+
+// User Routes
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -17,12 +18,8 @@ app.use(function(req, res, next) {
 	next();
 })
 // middleware
-// app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
-
-// view engine  
-// app.set('view engine','ejs');
 
 
 // database connection
@@ -33,10 +30,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 
 // routes
-// app.get('*', checkUser);
-// app.get('/', (req, res) => res.render('home'));
-// app.get(requireAuth);
-// app.use(authRoutes);
 
 // Routes for API
 app.use('/api/v1/parcels', deliveryOrderRoute);  
