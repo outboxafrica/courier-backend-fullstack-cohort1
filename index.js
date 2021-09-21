@@ -36,7 +36,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 // app.get('*', checkUser);
 // app.get('/', (req, res) => res.render('home'));
 // app.get(requireAuth);
-app.use(authRoutes);
+// app.use(authRoutes);
 
 // Routes for API
 app.use('/api/v1/parcels', deliveryOrderRoute);  
