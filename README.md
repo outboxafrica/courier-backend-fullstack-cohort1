@@ -203,7 +203,7 @@ Returns json data about orders by User ID.
 * **Success Response:**
 
   **Status:** 200 OK 
-      **Sample Content:** '{'order details by User id'}'
+      **Sample Content:** '{'order details by User ID'}'
  
             
 * **Error Response:**
